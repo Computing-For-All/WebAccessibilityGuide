@@ -76,6 +76,66 @@ dmButton.addEventListener("click", toggleDarkMode);
 
 let introTextSection = [
     {
+        mainIdea: 'Less than 5% of the world\'s top million websites are designed to be disability inclusion',
+        paragraph: 'insert'
+    },
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    },
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    }
+]
+
+let basicsTextSection = [
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    },
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    },
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    }
+]
+
+let visualTextSection = [
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    },
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    },
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    }
+]
+
+let audioTextSection = [
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    },
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    },
+    {
+        mainIdea: 'insert main idea',
+        paragraph: 'insert'
+    }
+]
+
+let motorTextSection = [
+    {
         mainIdea: 'insert main idea',
         paragraph: 'insert'
     },
@@ -91,47 +151,66 @@ let introTextSection = [
 
 let selectedArticleIndex = 0
 
-let articles = [
-    {
+let articles = {
+    'General Introduction': {
         title: 'General Introduction',
         hook: 'insert story here',
         textSections: introTextSection
+    },
+    'Accessibility Basics': {
+        title: 'Accessibility Basics',
+        hook: 'insert story here',
+        textSections: basicsTextSection
+    },
+    'Visual Accessibility': {
+        title: 'Visual Accessibility',
+        hook: 'insert story here',
+        textSections: visualTextSection
+    },
+    'Audio Accessibility': {
+        title: 'Audio Accessibility',
+        hook: 'insert story here',
+        textSections: audioTextSection
+    },
+    'Motor Accessibility': {
+        title: 'Motor Accessibility',
+        hook: 'insert story here',
+        textSections: motorTextSection
     }
-]
+}
 
-const listArticles = function() {
+const listArticles = function(keyword) {
 
-    let article = articles[selectedArticleIndex]
+    let article = articles[keyword]
     let list = document.querySelector("#articleList")
     let articleSection = document.createElement("section")
     articleSection.classList.add("article")
     articleSection.innerHTML = `
-        <h2>${article.title}</h2>
+        <h2>${keyword}</h2>
         <br>
-        <p class="article_text">${article.hook}</p>
-        
-        <ul class="article_text">${textSectionToHtml()}</ul>
-
+        <p class="article_hook">${article.hook}</p>
+        <img src="imgs/web-accessibility.png" alt="Web Accessibility Art" class="article_photo">
+        <ul class="article_text">${textSectionToHtml(keyword)}</ul>
     `
-
-    console.log(articleSection.innerHTML)
-
-    list.appendChild(articleSection)
-    
+    list.appendChild(articleSection);
 }
 
-function textSectionToHtml() {
+function textSectionToHtml(keyword) {
     
     let outputString = ''
 
-    articles[selectedArticleIndex].textSections.forEach(textSections => {
+    articles[keyword].textSections.forEach(textSections => {
         outputString += `
-            <li class="article_heading">${textSections.mainIdea}</li>
-            <div class="article_text">${textSections.paragraph}</div>\n
+            <li>${textSections.mainIdea}</li>
+            <div>${textSections.paragraph}</div>
+            <br>\n
         `   
     })
 
     return outputString
 }
 
-listArticles()
+listArticles('General Introduction');
+
+let basicsArticle = document.querySelector('#basics')
+basicArticle.addEventListener("clicked", listArticles('Accessibility Basics'));
