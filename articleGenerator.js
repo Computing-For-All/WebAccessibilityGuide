@@ -153,27 +153,22 @@ let selectedArticleIndex = 0
 
 let articles = {
     'General Introduction': {
-        title: 'General Introduction',
         hook: 'insert story here',
         textSections: introTextSection
     },
     'Accessibility Basics': {
-        title: 'Accessibility Basics',
         hook: 'insert story here',
         textSections: basicsTextSection
     },
     'Visual Accessibility': {
-        title: 'Visual Accessibility',
         hook: 'insert story here',
         textSections: visualTextSection
     },
     'Audio Accessibility': {
-        title: 'Audio Accessibility',
         hook: 'insert story here',
         textSections: audioTextSection
     },
     'Motor Accessibility': {
-        title: 'Motor Accessibility',
         hook: 'insert story here',
         textSections: motorTextSection
     }
@@ -213,4 +208,4 @@ function textSectionToHtml(keyword) {
 listArticles('General Introduction');
 
 let basicsArticle = document.querySelector('#basics')
-basicArticle.addEventListener("clicked", listArticles('Accessibility Basics'));
+basicsArticle.addEventListener("clicked", listArticles('Accessibility Basics'));
